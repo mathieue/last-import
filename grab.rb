@@ -33,8 +33,8 @@ while index <= total_page
   tracks = json_object['recenttracks']['track']
   total_page = json_object['recenttracks']['@attr']['totalPages'].to_i
   tracks.each do |t|
-    f.write t
-    f.write ", \n"
+    f.write t.to_json
+    f.write ", \n" if index != total_page
   end
   index += 1
 end
