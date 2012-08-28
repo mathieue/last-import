@@ -12,7 +12,7 @@ user = ARGV.shift
 puts "fetching #{user} with api key #{API_KEY}"
 
 def get(user, page = 1)
-  url = "http://ws.audioscrobbler.com/2.0/?format=json&method=user.getrecenttracks&limit=100"
+  url = "http://ws.audioscrobbler.com/2.0/?format=json&method=user.getrecenttracks&limit=200"
   url += "&user=#{user}"
   url += "&api_key=#{API_KEY}"
   url += "&page=#{page.to_s}"
@@ -37,6 +37,7 @@ while index <= total_page
     f.write ", \n" if index != total_page
   end
   index += 1
+  sleep 1
 end
 
 f.write ']'
